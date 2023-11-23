@@ -1,0 +1,25 @@
+{
+    "Base file": {
+        "scope": "",
+        "prefix": "main",
+        "body": [
+            "import styled from 'styled-components'",
+            "",
+            "const $1 = () => {",
+            "    return <Main></Main>",
+            "}",
+            "",
+            "const Main = styled.div``",
+            "",
+            "export default $1"
+        ],
+        "description": ""
+    },
+
+    "Styled div": {
+        "scope": "",
+        "prefix": "std",
+        "body": ["const $1 = styled.div`", "   $2", "`"],
+        "description": ""
+    }
+}
