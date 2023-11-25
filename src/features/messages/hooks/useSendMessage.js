@@ -22,7 +22,7 @@ export const useSendMessage = () => {
                 text,
                 created_at: date,
                 url: '',
-                ismy: true,
+                is_my: true,
             }
             console.log(currentChat[0])
             socket.emit('message', {

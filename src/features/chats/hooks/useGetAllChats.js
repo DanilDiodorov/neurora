@@ -4,13 +4,18 @@ import $api from 'shared/http'
 import { setChats } from '../model/slice'
 import { setMessages } from 'features/messages/model/slice'
 
+let isFetched = false
+
 const useGetAllChats = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const dispatch = useDispatch()
 
     useEffect(() => {
-        getAllChats()
+        if (!isFetched) {
+            getAllChats()
+            isFetched = true
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

@@ -17,7 +17,7 @@ export const MessagesList = ({ currentChat }) => {
     const list = chatMessages.map((message) => (
         <MessageBlock
             text={message.text}
-            isMy={message.ismy}
+            isMy={message.is_my}
             url={message.url}
             loading={message.loading || false}
             name={message.ismy ? 'Me' : currentChat ? currentChat.name : ''}
