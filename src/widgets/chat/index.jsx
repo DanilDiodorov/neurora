@@ -2,6 +2,7 @@ import { selectCurrentChats } from 'features/chats'
 import {
     MessageDeleteButton,
     MessageSendForm,
+    MessageStopGenerateButton,
     MessagesList,
 } from 'features/messages'
 import { selectCurrentMessages } from 'features/messages/model/slice'
@@ -86,10 +87,14 @@ const ChatWidget = () => {
             </MessagesContent>
             <MessagesToolBar>
                 <Container>
-                    <Left>
-                        <MessageDeleteButton />
-                    </Left>
-                    <Right></Right>
+                    <MessagesToolBarContent>
+                        <Left>
+                            <MessageDeleteButton />
+                        </Left>
+                        <Right>
+                            <MessageStopGenerateButton />
+                        </Right>
+                    </MessagesToolBarContent>
                 </Container>
             </MessagesToolBar>
             <MessageSendForm currentChat={currentChat} Container={Container} />
@@ -111,6 +116,11 @@ const Container = styled.div`
 `
 
 const MessagesToolBar = styled.div``
+
+const MessagesToolBarContent = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
 const Left = styled.div`
     display: flex;

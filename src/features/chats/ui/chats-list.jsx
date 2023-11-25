@@ -44,7 +44,7 @@ export const ChatsList = () => {
                             model={chat.model}
                             type={chat.type}
                             onDelete={() => setConfirmActive(true)}
-                            canEdit={chat.canedit}
+                            canEdit={chat.can_edit}
                             current={
                                 currentChatID !== null &&
                                 currentChatID.toString() === chat.id.toString()

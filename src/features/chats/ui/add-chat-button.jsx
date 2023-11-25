@@ -67,9 +67,9 @@ export const AddChatButton = () => {
                 onChange={(e) => setType(e.target.value)}
             >
                 <FormSelectOption value="text">Текст</FormSelectOption>
-                <FormSelectOption value="image">
+                {/* <FormSelectOption value="image">
                     Генерация изображений
-                </FormSelectOption>
+                </FormSelectOption> */}
             </FormSelect>
             <FormSelect text="Модель" innerRef={modelRef}>
                 <Options type={type} />

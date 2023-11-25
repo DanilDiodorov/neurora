@@ -38,4 +38,7 @@ export const MessageDeleteButton = () => {
 
 const Icon = styled.span`
     color: ${({ theme }) => theme.colors.danger};
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
