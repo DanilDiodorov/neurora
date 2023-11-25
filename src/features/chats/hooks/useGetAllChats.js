@@ -10,9 +10,7 @@ const useGetAllChats = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        return () => {
-            getAllChats()
-        }
+        getAllChats()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
