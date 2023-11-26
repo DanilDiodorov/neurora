@@ -4,20 +4,24 @@ import { LogoutButton } from 'features/auth/logout'
 import { ThemeSwicth } from 'features/theme'
 import AppLogo from 'shared/ui/app-logo'
 import styled from 'styled-components'
+import { BalanceBlock } from 'features/wallet/ui/balance-block'
 
 const Menu = () => {
     return (
         <Main>
             <Container>
                 <AppLogo />
-                <Title>Новый чат</Title>
-                <AddChatButton />
-                <Title>Чаты</Title>
+                <InfoBlock>
+                    <ProfileCard />
+                    <BalanceBlock />
+                </InfoBlock>
                 <ButtonBlock>
-                    <ChatsList />
+                    <AddChatButton />
+                    <ChatsListBlock>
+                        <ChatsList />
+                    </ChatsListBlock>
                 </ButtonBlock>
                 <BottomBlock>
-                    <ProfileCard />
                     <ThemeSwicth />
                     <LogoutButton />
                 </BottomBlock>
@@ -33,24 +37,34 @@ const Main = styled.div`
     overflow-y: auto;
 `
 
-const ButtonBlock = styled.div`
+const InfoBlock = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 40px 0;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.stroke};
+`
+
+const ButtonBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 0;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.stroke};
+`
+
+const ChatsListBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 `
 
 const Container = styled.div`
     padding: 20px;
 `
 
-const Title = styled.div`
-    margin: 20px 0;
-`
-
 const BottomBlock = styled.div`
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 2px solid ${({ theme }) => theme.colors.stroke};
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;

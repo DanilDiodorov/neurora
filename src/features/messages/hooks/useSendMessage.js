@@ -3,10 +3,12 @@ import { addOneMessage } from '../model/slice'
 import socket from 'shared/http/socket'
 import { selectCurrentChats } from 'features/chats'
 import { animateScroll } from 'react-scroll'
+import { selectCurrentUser } from 'features/user'
 
 export const useSendMessage = () => {
     const dispatch = useDispatch()
     const chats = useSelector(selectCurrentChats)
+    const user = useSelector(selectCurrentUser)
 
     const sendMessage = async (chatID, text) => {
         const currentChat = chats.filter((chat) => {
@@ -24,9 +26,10 @@ export const useSendMessage = () => {
                 url: '',
                 is_my: true,
             }
-            console.log(currentChat[0])
+            console.log(user)
             socket.emit('message', {
                 ...data,
+                uid: user.id,
                 chatType: currentChat[0].type,
                 chatModel: currentChat[0].model,
             })

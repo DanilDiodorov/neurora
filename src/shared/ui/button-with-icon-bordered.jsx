@@ -29,6 +29,8 @@ const Main = styled.button`
 
 const Icon = styled.div`
     font-size: 20px;
+    display: flex;
+    align-items: center;
 `
 
 const Text = styled.div``

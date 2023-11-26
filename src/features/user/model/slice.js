@@ -14,10 +14,10 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
+            state.id = action.payload.id
             state.email = action.payload.email
             state.verified = action.payload.verified
             state.role = action.payload.role
-            state.tokens = action.payload.tokens
         },
         setAuth: (state, action) => {
             state.isAuth = action.payload

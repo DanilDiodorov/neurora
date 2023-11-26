@@ -7,6 +7,7 @@ import {
 } from '../model/slice'
 import { useEffect } from 'react'
 import { setChatCanSend } from 'features/chats'
+import { changeBalance } from 'features/wallet'
 
 const useMessages = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const useMessages = () => {
 
         socket.on('chat message part', (data) => {
             dispatch(addPartOfMessage(data))
+            dispatch(changeBalance(data.balance))
         })
 
         socket.on('sending', (data) => {
