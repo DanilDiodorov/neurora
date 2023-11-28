@@ -29,7 +29,7 @@ export const ChatsList = () => {
                     <SpinnerLoader />
                 </LoadingBlock>
             ) : (
-                chats.map((chat) => (
+                chats.data.map((chat) => (
                     <>
                         <ConfirmPopup
                             onClick={() => onDelete(chat.id)}

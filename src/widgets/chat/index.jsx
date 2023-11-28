@@ -65,7 +65,7 @@ const ChatWidget = () => {
     }, [id])
 
     useEffect(() => {
-        chats.forEach((chat) => {
+        chats.data.forEach((chat) => {
             if (chat.id.toString() === id) {
                 setCurrentChat(chat)
                 console.log(chat)

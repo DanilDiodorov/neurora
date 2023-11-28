@@ -5,6 +5,8 @@ import SendButton from 'shared/ui/send-button'
 import styled from 'styled-components'
 import { useSendMessage } from '../hooks/useSendMessage'
 import { useParams } from 'react-router-dom'
+import { selectCurrentChats } from 'features/chats'
+import { useSelector } from 'react-redux'
 
 let shift = false
 
@@ -13,9 +15,10 @@ export const MessageSendForm = ({ Container, currentChat }) => {
     const sendMessage = useSendMessage()
     const { id } = useParams()
     const [active, setActive] = useState(false)
+    const chats = useSelector(selectCurrentChats)
 
     const sendHandler = () => {
-        if (active && currentChat.canSend) {
+        if (active && chats.canSend) {
             sendMessage(id, text)
             setText('')
         }
@@ -58,7 +61,7 @@ export const MessageSendForm = ({ Container, currentChat }) => {
                         onKeyUp={keyUpHandler}
                     />
                     <SendButton
-                        active={currentChat.canSend && active}
+                        active={chats.canSend && active}
                         onClick={sendHandler}
                     >
                         <BiSolidSend />

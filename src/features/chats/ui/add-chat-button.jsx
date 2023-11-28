@@ -14,9 +14,18 @@ const Options = ({ type }) => {
             return (
                 <>
                     <FormSelectOption value="gpt-3.5-turbo">
-                        GPT-3.5-turbo
+                        GPT-3.5-turbo 4k
+                    </FormSelectOption>
+                    <FormSelectOption value="gpt-3.5-turbo-1106">
+                        GPT-3.5-turbo-1106 16k
+                    </FormSelectOption>
+                    <FormSelectOption value="gpt-3.5-turbo-16k">
+                        GPT-3.5-turbo 16k
                     </FormSelectOption>
                     <FormSelectOption value="gpt-4">GPT-4</FormSelectOption>
+                    <FormSelectOption value="gpt-4-1106-preview">
+                        GPT-4-Turbo
+                    </FormSelectOption>
                 </>
             )
         case 'image':

@@ -6,7 +6,7 @@ import {
     setMessageLoading,
 } from '../model/slice'
 import { useEffect } from 'react'
-import { setChatCanSend } from 'features/chats'
+import { setChatCanSend, setChatsCanSend } from 'features/chats'
 import { changeBalance } from 'features/wallet'
 
 const useMessages = () => {
@@ -24,15 +24,13 @@ const useMessages = () => {
 
         socket.on('sending', (data) => {
             if (data.sending === 'loading') {
-                dispatch(
-                    setChatCanSend({ chat_id: data.chat_id, canSend: false })
-                )
+                dispatch(setChatCanSend({ chat_id: data.chat_id }))
+                dispatch(setChatsCanSend(false))
             } else if (data.sending === 'start') {
                 dispatch(setMessageLoading({ mid: data.mid, loading: false }))
             } else if (data.sending === 'end') {
-                dispatch(
-                    setChatCanSend({ chat_id: data.chat_id, canSend: true })
-                )
+                dispatch(setChatCanSend({ chat_id: data.chat_id }))
+                dispatch(setChatsCanSend(true))
             }
         })
 

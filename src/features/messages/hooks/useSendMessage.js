@@ -11,7 +11,7 @@ export const useSendMessage = () => {
     const user = useSelector(selectCurrentUser)
 
     const sendMessage = async (chatID, text) => {
-        const currentChat = chats.filter((chat) => {
+        const currentChat = chats.data.filter((chat) => {
             return chat.id.toString() === chatID.toString()
         })
 
