@@ -4,7 +4,7 @@ import { FaUserCircle } from 'react-icons/fa'
 import { RiOpenaiFill } from 'react-icons/ri'
 import styled, { keyframes } from 'styled-components'
 import hljs from 'highlight.js'
-import randomstring from 'randomstring'
+// import randomstring from 'randomstring'
 
 const MessageBlock = ({
     time,
@@ -27,13 +27,13 @@ const MessageBlock = ({
                 hljs.highlightElement(textRef.current.querySelector('pre code'))
         }
 
-        if (textRef.current.querySelector('pre') !== null) {
-            textRef.current.querySelectorAll('pre').forEach((el) => {
-                el.id = randomstring.generate()
-                const copyElement = <div>asdasd</div>
-                el.render(copyElement)
-            })
-        }
+        // if (textRef.current.querySelector('pre') !== null) {
+        //     textRef.current.querySelectorAll('pre').forEach((el) => {
+        //         el.id = randomstring.generate()
+        //         const copyElement = <div>asdasd</div>
+        //         el.render(copyElement)
+        //     })
+        // }
     }, [text, loading])
 
     useEffect(() => {
