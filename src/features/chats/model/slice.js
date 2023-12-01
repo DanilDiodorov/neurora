@@ -27,15 +27,23 @@ export const chatSlice = createSlice({
             })
             return state
         },
-        setChatCanSend: (state, action) => {
+        setChatFirstLoad: (state, action) => {
             state.data = state.data.map((chat) => {
                 if (chat.id.toString() === action.payload.chat_id) {
-                    chat.canSend = action.payload.canSend
-                    return chat
-                } else {
-                    return chat
+                    chat.firstLoad = action.payload.firstLoad
                 }
+                return chat
             })
+            return state
+        },
+        setChatAllMessagesLoaded: (state, action) => {
+            state.data = state.data.map((chat) => {
+                if (chat.id.toString() === action.payload.chat_id) {
+                    chat.allMessagesLoaded = action.payload.allMessagesLoaded
+                }
+                return chat
+            })
+            return state
         },
     },
 })
@@ -46,6 +54,7 @@ export const {
     setChats,
     addChat,
     deleteOneChat,
-    setChatCanSend,
+    setChatFirstLoad,
     setChatsCanSend,
+    setChatAllMessagesLoaded,
 } = chatSlice.actions

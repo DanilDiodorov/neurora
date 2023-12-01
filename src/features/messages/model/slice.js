@@ -7,7 +7,7 @@ export const messageSlice = createSlice({
     initialState,
     reducers: {
         setMessages: (state, action) => {
-            state = state.concat(action.payload)
+            state = [...action.payload, ...state]
             return state
         },
         addOneMessage: (state, action) => {

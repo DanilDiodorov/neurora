@@ -3,6 +3,7 @@ export { ChatsList } from './ui/chats-list'
 export {
     chatSlice,
     selectCurrentChats,
-    setChatCanSend,
+    setChatFirstLoad,
     setChatsCanSend,
+    setChatAllMessagesLoaded,
 } from './model/slice'

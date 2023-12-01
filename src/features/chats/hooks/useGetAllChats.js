@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import $api from 'shared/http'
 import { setChats } from '../model/slice'
-import { setMessages } from 'features/messages/model/slice'
+// import { setMessages } from 'features/messages/model/slice'
 
 let isFetched = false
 
@@ -23,16 +23,10 @@ const useGetAllChats = () => {
         setLoading(true)
         try {
             const response = await $api.get('/chats/get')
-            response.data.forEach(async (chat) => {
-                const messages = await $api.post('/messages/get', {
-                    id: chat.id,
-                })
-                dispatch(setMessages(messages.data))
-                console.log(messages.data)
-            })
 
             response.data = response.data.map((chat) => {
-                chat.canSend = true
+                chat.firstLoad = true
+                chat.allMessagesLoaded = false
                 return chat
             })
 

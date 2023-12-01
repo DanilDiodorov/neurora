@@ -22,6 +22,7 @@ const ChatWidget = () => {
     const chats = useSelector(selectCurrentChats)
     const [resized, setResized] = useState(false)
     const [currentChat, setCurrentChat] = useState({})
+    const [currentScroll, setCurrentScroll] = useState(0)
 
     const resizeHandler = () => {
         let block = document.querySelector('#ContainerElementID')
@@ -50,7 +51,7 @@ const ChatWidget = () => {
             let block = document.querySelector('#ContainerElementID')
             if (block.clientHeight < block.scrollHeight) {
                 animateScroll.scrollToBottom({
-                    smooth: true,
+                    smooth: false,
                     duration: 0,
                     containerId: 'ContainerElementID',
                 })
@@ -68,7 +69,6 @@ const ChatWidget = () => {
         chats.data.forEach((chat) => {
             if (chat.id.toString() === id) {
                 setCurrentChat(chat)
-                console.log(chat)
             }
         })
     }, [id, chats])
@@ -78,24 +78,29 @@ const ChatWidget = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messages])
 
+    const scrollHandler = (e) => {
+        setCurrentScroll(e.target.scrollTop)
+    }
+
     return (
         <Main>
-            <MessagesContent id="ContainerElementID">
+            <MessagesContent id="ContainerElementID" onScroll={scrollHandler}>
                 <Container>
-                    <MessagesList currentChat={currentChat} />
+                    <MessagesList
+                        currentScroll={currentScroll}
+                        currentChat={currentChat}
+                    />
                 </Container>
             </MessagesContent>
             <MessagesToolBar>
-                <Container>
-                    <MessagesToolBarContent>
-                        <Left>
-                            <MessageDeleteButton />
-                        </Left>
-                        <Right>
-                            <MessageStopGenerateButton />
-                        </Right>
-                    </MessagesToolBarContent>
-                </Container>
+                <MessagesToolBarContent>
+                    <Left>
+                        <MessageDeleteButton />
+                    </Left>
+                    <Right>
+                        <MessageStopGenerateButton />
+                    </Right>
+                </MessagesToolBarContent>
             </MessagesToolBar>
             <MessageSendForm currentChat={currentChat} Container={Container} />
         </Main>
@@ -108,18 +113,25 @@ const Main = styled.div`
     grid-template-rows: 1fr 60px 60px;
 `
 const MessagesContent = styled.div`
-    overflow: auto;
+    overflow-y: auto;
 `
 
 const Container = styled.div`
     padding: 0 10px;
 `
 
-const MessagesToolBar = styled.div``
+const MessagesToolBar = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
+`
 
 const MessagesToolBarContent = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
 `
 
 const Left = styled.div`
