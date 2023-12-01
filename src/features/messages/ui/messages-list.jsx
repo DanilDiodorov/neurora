@@ -47,9 +47,5 @@ const Main = styled.div`
     display: flex;
     gap: 10px;
     flex-direction: column;
-    flex: 1;
-
-    &:first-child {
-        margin-top: 10px;
-    }
+    margin: 10px 0;
 `
